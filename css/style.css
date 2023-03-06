@@ -178,6 +178,14 @@ main{
     color: white;
 }
 
+.bomb-cells{
+
+    background-color: red;
+
+    color: white;
+
+}
+
 .result{
 
     position: absolute;

@@ -28,6 +28,7 @@ const difficultyEl = document.getElementById("difficulty-select");
 // Variabile per terminare non rendere piu cliccabile la griglia
 let endGame = false;
 
+// Variabile contatore per tenere traccia dei click eseguiti
 let contatore = 0;
 
 
@@ -52,15 +53,19 @@ playBtnEl.addEventListener("click", function() {
     
     console.log(bombs);
 
+    // SE la difficoltà selezionata è la numero 1
     if (difficulty == 1) {
 
         // Creo un ciclo che genera le celle all'interno della griglia
         for (let i = 1; i <= 100; i++) {
             
+            //assegno a una variabile la funzione per creare le celle, il numero all'interno e definire la lunghezza delle righe
             const squareEl = createSquare(i, 10, gridEl);
 
+            // Funzione per creare 16 numeri random diversi tra loro e inserirli in un array
             createRandomNum(bombs, 100);
         
+            // creo un evento al click del button per ricaricare la pagina
             refreshBtnEl.addEventListener("click", function(){
                 window.location.reload();
             });
@@ -68,42 +73,47 @@ playBtnEl.addEventListener("click", function() {
             // creo un evento al click della cella
             squareEl.addEventListener("click", function(){
 
+                // Se la variabile endGame è vera il gioco finisce
                 if(endGame) {
                     return;
                 };
 
                 console.log(bombs);
 
+                // SE il numero della cella cliccata è presente nell'array di numeri random
                 if (bombs.includes(i)){
 
                     gridEl.style.filter = "blur(2px)";
-
+                    gridEl.style.opacity = "0.9";
+                    // Mostro la scritta "hai perso"
                     youLose.style.display = "block";
-
+                    // La casella cliccata diventa rossa
                     squareEl.style.backgroundColor = "red";
                     squareEl.style.color = "white";
-
+                    
+                    // Mostro i click validi eseguiti prima di aver perso
                     clickedTimes.innerHTML = `Il tuo punteggio: ${contatore} click`;
-
-
+                    
+                    // Il gioco finisce e la griglia non più più cliccabile
                     endGame = true;
-
 
                 } else {
 
                     // al click della cella deve essere aggiunta la classe active
                     squareEl.classList.add("active");
 
+                        // Il contatore tiene conto progressivamente dei click eseguiti sulle caselle vvalide
                         contatore++
                         
+                        // SE il contatore è uguale al numero di celle totali - il numero di caselle bomba
                         if (contatore == 100 - 16){
     
                             gridEl.style.filter = "blur(2px)";
-    
+                            // Mostro la scritta "hai vinto"
                             youWin.style.display = "block";
-
+                            // Mostro i click eseguiti alla vittoria
                             clickedTimes.innerHTML = `Punteggio massimo: ${contatore} click`;
-
+                            // Il gioco finisce
                             endGame = true;
                         };
 
@@ -112,9 +122,7 @@ playBtnEl.addEventListener("click", function() {
                     // Mostro in console il numero della cella cliccata
                     console.log(`Hai cliccato la cella n. ${i}`);
 
-
-                };
-                
+                }; 
             });
         };
         
@@ -173,10 +181,8 @@ playBtnEl.addEventListener("click", function() {
                     
                     // Mostro in console il numero della cella cliccata
                     console.log(`Hai cliccato la cella n. ${i}`);
-                };
-                
+                }; 
             });
-
         };
            
     } else if (difficulty == 3) {
@@ -234,12 +240,13 @@ playBtnEl.addEventListener("click", function() {
                     
                     // Mostro in console il numero della cella cliccata
                     console.log(`Hai cliccato la cella n. ${i}`); 
-                };
-                
+                };  
             });
         };
     };   
 });
+
+
 
 
 // Functions
