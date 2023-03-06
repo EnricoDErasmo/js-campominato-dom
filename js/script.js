@@ -27,6 +27,8 @@ const difficultyEl = document.getElementById("difficulty-select");
 // Variabile per terminare non rendere piu cliccabile la griglia
 let endGame = false;
 
+let contatore = 0;
+
 
 
 
@@ -46,13 +48,8 @@ playBtnEl.addEventListener("click", function() {
     
     // Creo un array di 16 numeri casuali
     const bombs = [];
-
-    const clicked = [];
     
-    
-
     console.log(bombs);
-    console.log(clicked);
 
     if (difficulty == 1) {
 
@@ -94,18 +91,19 @@ playBtnEl.addEventListener("click", function() {
                     // al click della cella deve essere aggiunta la classe active
                     squareEl.classList.add("active");
 
-                    // clicked.push(parseInt(i));
-                    
+                        contatore++
+                        
+                        if (contatore == 100 - 16){
+    
+                            gridEl.style.filter = "blur(2px)";
+    
+                            youWin.style.display = "block";
+    
+                            endGame = true;
+                        };
 
-                    // if (clicked.lenght == 100 - 16){
+                        console.log(contatore);
 
-                    //     gridEl.style.filter = "blur(2px)";
-
-                    //     youWin.style.display = "block";
-
-                    //     endGame = true;
-                    // };
-                    
                     // Mostro in console il numero della cella cliccata
                     console.log(`Hai cliccato la cella n. ${i}`);
 
@@ -135,7 +133,13 @@ playBtnEl.addEventListener("click", function() {
                     return;
                 };
 
+                console.log(bombs);
+
                 if (bombs.includes(i)){
+
+                    gridEl.style.filter = "blur(2px)";
+
+                    youLose.style.display = "block";
 
                     squareEl.style.backgroundColor = "red";
                     squareEl.style.color = "white";
@@ -146,6 +150,17 @@ playBtnEl.addEventListener("click", function() {
 
                     // al click della cella deve essere aggiunta la classe active
                     squareEl.classList.add("active");
+
+                    contatore++
+                        
+                        if (contatore == 81 - 16){
+    
+                            gridEl.style.filter = "blur(2px)";
+    
+                            youWin.style.display = "block";
+    
+                            endGame = true;
+                        };
                     
                     // Mostro in console il numero della cella cliccata
                     console.log(`Hai cliccato la cella n. ${i}`);
@@ -175,7 +190,13 @@ playBtnEl.addEventListener("click", function() {
                     return;
                 };
 
+                console.log(bombs);
+
                 if (bombs.includes(i)){
+
+                    gridEl.style.filter = "blur(2px)";
+
+                    youLose.style.display = "block";
 
                     squareEl.style.backgroundColor = "red";
                     squareEl.style.color = "white";
@@ -186,6 +207,17 @@ playBtnEl.addEventListener("click", function() {
 
                     // al click della cella deve essere aggiunta la classe active
                     squareEl.classList.add("active");
+
+                    contatore++
+                        
+                        if (contatore == 49 - 16){
+    
+                            gridEl.style.filter = "blur(2px)";
+    
+                            youWin.style.display = "block";
+    
+                            endGame = true;
+                        };
                     
                     // Mostro in console il numero della cella cliccata
                     console.log(`Hai cliccato la cella n. ${i}`); 
