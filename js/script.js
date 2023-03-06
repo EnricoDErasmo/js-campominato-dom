@@ -17,6 +17,7 @@ const refreshEl = document.getElementById("refresh");
 
 const youLose = document.getElementById("you-lose");
 const youWin = document.getElementById("you-win");
+const clickedTimes = document.getElementById("clicked-times");
 
 // Creo una variabile per bersagliare il container dove creeremo la griglia
 const gridEl = document.getElementById("grid");
@@ -82,6 +83,8 @@ playBtnEl.addEventListener("click", function() {
                     squareEl.style.backgroundColor = "red";
                     squareEl.style.color = "white";
 
+                    clickedTimes.innerHTML = `Il tuo punteggio: ${contatore} click`;
+
 
                     endGame = true;
 
@@ -98,7 +101,9 @@ playBtnEl.addEventListener("click", function() {
                             gridEl.style.filter = "blur(2px)";
     
                             youWin.style.display = "block";
-    
+
+                            clickedTimes.innerHTML = `Punteggio massimo: ${contatore} click`;
+
                             endGame = true;
                         };
 
@@ -144,6 +149,8 @@ playBtnEl.addEventListener("click", function() {
                     squareEl.style.backgroundColor = "red";
                     squareEl.style.color = "white";
 
+                    clickedTimes.innerHTML = `Il tuo punteggio: ${contatore} click`;
+
                     endGame = true;
 
                 } else {
@@ -158,6 +165,8 @@ playBtnEl.addEventListener("click", function() {
                             gridEl.style.filter = "blur(2px)";
     
                             youWin.style.display = "block";
+
+                            clickedTimes.innerHTML = `Punteggio massimo: ${contatore} click`;
     
                             endGame = true;
                         };
@@ -201,6 +210,8 @@ playBtnEl.addEventListener("click", function() {
                     squareEl.style.backgroundColor = "red";
                     squareEl.style.color = "white";
 
+                    clickedTimes.innerHTML = `Il tuo punteggio: ${contatore} click`;
+
                     endGame = true;
 
                 } else {
@@ -215,6 +226,8 @@ playBtnEl.addEventListener("click", function() {
                             gridEl.style.filter = "blur(2px)";
     
                             youWin.style.display = "block";
+
+                            clickedTimes.innerHTML = `Punteggio massimo: ${contatore} click`;
     
                             endGame = true;
                         };

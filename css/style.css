@@ -210,4 +210,19 @@ main{
 
     color: green;   
 }
+
+#clicked-times{
+    position: absolute;
+
+    left: 50%;
+    top: 60%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 1.8em;
+    font-weight: bold;
+
+    white-space: nowrap;
+
+}
 /* /Main */
